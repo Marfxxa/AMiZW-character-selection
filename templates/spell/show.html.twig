@@ -1,0 +1,30 @@
+<h2>Zaklęcia</h2>
+
+<a href="{{ path('spell_new_for_character', { id: character.id }) }}">
+    + Dodaj zaklęcie
+</a>
+
+{% if character.spells is empty %}
+    <p>Ta postać nie ma jeszcze zaklęć.</p>
+{% else %}
+    <table>
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Moc</th>
+            <th>Koszt many</th>
+            <th>Opis</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for spell in character.spells %}
+            <tr>
+                <td>{{ spell.name }}</td>
+                <td>{{ spell.power }}</td>
+                <td>{{ spell.manaCost }}</td>
+                <td>{{ spell.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

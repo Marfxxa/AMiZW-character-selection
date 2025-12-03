@@ -9,9 +9,9 @@ namespace App\Service;
 use App\Entity\Character;
 use App\Repository\CharacterRepository;
 
-class CharacterService
+readonly class CharacterService
 {
-    public function __construct(private readonly CharacterRepository $characterRepository)
+    public function __construct(private CharacterRepository $characterRepository)
     {
     }
 

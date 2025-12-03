@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
@@ -18,7 +20,6 @@ class Character
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    // Klasa postaci (wojownik, mag itp.)
     #[ORM\Column(length: 50)]
     private ?string $className = null;
 
@@ -36,6 +37,13 @@ class Character
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description = null;
+//    #[ORM\OneToMany(
+//        targetEntity: Spell::class,
+//        mappedBy: 'character',
+//        cascade: ['persist', 'remove'],
+//        orphanRemoval: true
+//    )]
+//    private Collection $spells;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -43,6 +51,7 @@ class Character
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+//        $this->spells = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,4 +154,34 @@ class Character
 
         return $this;
     }
+
+//    /**
+//     * @return Collection<int, Spell>
+//     */
+//    public function getSpells(): Collection
+//    {
+//        return $this->spells;
+//    }
+//
+//    public function addSpell(Spell $spell): static
+//    {
+//        if (!$this->spells->contains($spell)) {
+//            $this->spells->add($spell);
+//            $spell->setCharacter($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeSpell(Spell $spell): static
+//    {
+//        if ($this->spells->removeElement($spell)) {
+//            // ustawienie strony właściciela na null
+//            if ($spell->getCharacter() === $this) {
+//                $spell->setCharacter(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowe zaklęcie{% endblock %}
+
+{% block body %}
+    <h1>Dodaj zaklęcie dla postaci: {{ character.name }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Zapisz zaklęcie</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('character_show', { id: character.id }) }}">← Powrót do postaci</a>
+{% endblock %}

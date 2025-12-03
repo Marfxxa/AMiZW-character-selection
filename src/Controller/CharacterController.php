@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Character;
 use App\Form\CharacterType;
-use App\Repository\CharacterRepository;
 use App\Service\CharacterService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
