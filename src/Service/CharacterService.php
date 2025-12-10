@@ -24,4 +24,7 @@ readonly class CharacterService
     {
         $this->characterRepository->createCharacter($character);
     }
+    public function removeCharacter(Character $character) :void {
+        $this->characterRepository->deleteCharacter($character);
+    }
 }

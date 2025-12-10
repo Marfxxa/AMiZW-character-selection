@@ -29,11 +29,11 @@ class CharacterRepository extends ServiceEntityRepository implements CharacterRe
 
     public function deleteCharacter(Character $character): void
     {
+        $entityManager = $this->getEntityManager();
+        $entityManager->remove($character);
+        $entityManager->flush();
     }
 
-    public function findCharacter(int $id): ?Character
-    {
-    }
 
     public function getAllCharacters(): array
     {

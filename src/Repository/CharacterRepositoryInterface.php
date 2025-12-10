@@ -14,5 +14,4 @@ interface CharacterRepositoryInterface
     public function getAllCharacters(): array;
     public function deleteCharacter(Character $character): void;
     public function editCharacter(Character $character): void;
-    public function findCharacter(int $id): ?Character;
 }

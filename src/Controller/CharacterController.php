@@ -47,10 +47,10 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/{id}', name: 'character_show', methods: ['GET'])]
-    public function show(): Response
+    public function show(Character $character ): Response
     {
         return $this->render('character/show.html.twig', [
-//            'character' => $character,
+           'character' => $character,
         ]);
     }
 
@@ -64,8 +64,10 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/{id}', name: 'character_delete', methods: ['POST'])]
-    public function delete(Request $request): Response
+    public function delete(Request $request, Character $character): Response
     {
+        
+        $this->characterService->removeCharacter($character);
         return $this->redirectToRoute('character_index');
     }
 }
